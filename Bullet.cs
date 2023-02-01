@@ -14,4 +14,13 @@ public class Bullet : MonoBehaviour
     void Update()
     {
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name != "MainPlayer")
+        {
+            Destroy(col.gameObject, 0.0f);
+            Destroy(this.gameObject, 0.0f);
+        }
+    }
 }

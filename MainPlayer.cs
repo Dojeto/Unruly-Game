@@ -6,6 +6,7 @@ public class MainPlayer : MonoBehaviour
 {
     private Transform playerTransform;
     public GameObject bulletPrefab;
+    private GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +26,19 @@ public class MainPlayer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Quaternion rotationVector = Quaternion.Euler(0,0,90);
+            Quaternion rotationVector = Quaternion.Euler(0, 0, 90);
             transform.rotation = transform.rotation * rotationVector;
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.velocity = bullet.transform.up * -10f;
+            rb.velocity = bullet.transform.up * -20f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name != bullet.gameObject.name)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
