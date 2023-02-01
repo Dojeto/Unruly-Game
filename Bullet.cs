@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name != "MainPlayer")
+        if (col.gameObject.name != "MainPlayer" && col.gameObject.name != "Point")
         {
             Destroy(col.gameObject, 0.0f);
             Destroy(this.gameObject, 0.0f);

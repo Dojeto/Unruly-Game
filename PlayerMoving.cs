@@ -8,7 +8,7 @@ public class PlayerMoving : MonoBehaviour
     private float y = Mathf.Sin(0);
     private float x = Mathf.Cos(0);
 
-    private float _speed = 10.0f;
+    private float _speed = 5.0f;
     void Start()
     {
 
